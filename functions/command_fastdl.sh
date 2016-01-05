@@ -27,7 +27,7 @@ while true; do
 	esac
 done
 # Create FastDL folder if it doesn't exit
-if [ ! -d ${fastdldir} ]; then
+if [ ! -d "${fastdldir}" ]; then
 	echo "Creating FastDL directory"
 	mkdir -v "${fastdldir}"
 	sleep 1
