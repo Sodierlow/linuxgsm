@@ -11,13 +11,6 @@ local modulename="FastDL Creator"
 function_selfname="$(basename $(readlink -f "${BASH_SOURCE[0]}"))"
 
 check.sh
-# Check if server directory exists
-if [ ! -d ${systemdir} ]; then
-	echo "Sorry, your game folder was not found"
-	echo "Check your game installation or contact us"
-	sleep 2
-	exit
-fi
 
 # Directory
 fastdldir="${rootdir}/fastdl"
