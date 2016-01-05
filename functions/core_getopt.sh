@@ -89,9 +89,6 @@ case "$getopt" in
 	d|details)
 		command_details.sh;;
 	b|backup)
-		command_backup.sh;;
-        pw|serveradmin-password)
-                command_ts3_server_password.sh;;
 	dev|dev-debug)
 		command_dev_debug.sh;;		
 	i|install)
@@ -115,7 +112,6 @@ case "$getopt" in
 		echo -e "\e[34mmonitor\t\e[0mChecks that the server is running."
 		echo -e "\e[34memail-test\t\e[0mSends test monitor email."
 		echo -e "\e[34mdetails\t\e[0mDisplays useful infomation about the server."
-	        echo -e "\e[34mserveradmin-password\t\e[0mChanges TS3 server password."
 		echo -e "\e[34mbackup\t\e[0mCreate archive of the server."
 		echo -e "\e[34minstall\t\e[0mInstall the server."
 		echo -e "\e[34mauto-install\t\e[0mInstall the server, without prompts."
@@ -204,6 +200,8 @@ case "$getopt" in
 		command_install.sh;;
 	ai|auto-install)
 		fn_autoinstall;;
+	fd|fastdl)
+		command_fastdl.sh;;
 	dd|depsdetect)
 		command_dev_detect_deps.sh;;
 	*)
@@ -225,6 +223,7 @@ case "$getopt" in
 		echo -e "\e[34mdetails\t\e[0mDisplays useful infomation about the server."
 		echo -e "\e[34mbackup\t\e[0mCreate archive of the server."
 		echo -e "\e[34mconsole\t\e[0mConsole allows you to access the live view of a server."
+		echo -e "\e[34mfastdl\t\e[0mStarts FastDL folder creator."
 		echo -e "\e[34mdebug\t\e[0mSee the output of the server directly to your terminal."
 		echo -e "\e[34minstall\t\e[0mInstall the server."
 		echo -e "\e[34mauto-install\t\e[0mInstall the server, without prompts."
