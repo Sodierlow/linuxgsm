@@ -89,6 +89,7 @@ case "$getopt" in
 	d|details)
 		command_details.sh;;
 	b|backup)
+		command_backup.sh;;
 	dev|dev-debug)
 		command_dev_debug.sh;;		
 	i|install)
