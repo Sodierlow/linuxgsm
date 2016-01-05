@@ -89,7 +89,6 @@ case "$getopt" in
 	d|details)
 		command_details.sh;;
 	b|backup)
-		command_backup.sh;;
 	dev|dev-debug)
 		command_dev_debug.sh;;		
 	i|install)
@@ -201,6 +200,8 @@ case "$getopt" in
 		command_install.sh;;
 	ai|auto-install)
 		fn_autoinstall;;
+	fd|fastdl)
+		command_fastdl.sh;;
 	dd|depsdetect)
 		command_dev_detect_deps.sh;;
 	*)
@@ -222,6 +223,7 @@ case "$getopt" in
 		echo -e "\e[34mdetails\t\e[0mDisplays useful infomation about the server."
 		echo -e "\e[34mbackup\t\e[0mCreate archive of the server."
 		echo -e "\e[34mconsole\t\e[0mConsole allows you to access the live view of a server."
+		echo -e "\e[34mfastdl\t\e[0mStarts FastDL folder creator."
 		echo -e "\e[34mdebug\t\e[0mSee the output of the server directly to your terminal."
 		echo -e "\e[34minstall\t\e[0mInstall the server."
 		echo -e "\e[34mauto-install\t\e[0mInstall the server, without prompts."
@@ -411,6 +413,8 @@ if [ "${gamename}" == "Mumble" ]; then
 	fn_getopt_mumble
 elif [ "${gamename}" == "Teamspeak 3" ]; then
 	fn_getopt_teamspeak3
+elif [ "${gamename}" == "Garry's Mod" ]; then
+	fn_getopt_gmodserver
 elif [ "${engine}" == "unreal2" ]; then
 	if [ "${gamename}" == "Unreal Tournament 2004" ]; then
 		fn_getopt_ut2k4
