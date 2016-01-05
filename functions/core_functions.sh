@@ -85,11 +85,10 @@ functionfile="${FUNCNAME}"
 fn_runfunction
 }
 
-command_fastdl.sh(){
+command_ts3_server_password.sh(){
 functionfile="${FUNCNAME}"
 fn_runfunction
 }
-
 
 fn_restart(){
 local modulename="Restarting"
