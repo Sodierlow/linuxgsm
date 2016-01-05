@@ -41,7 +41,7 @@ fn_gmod_fastdl(){
 echo "Gathering all needed FastDL files..."
 sleep 1
 
-cd ${systemdir}
+cd "${systemdir}"
 
 # Map Files
 echo "Copying map files"
@@ -183,7 +183,7 @@ if [ "${gamename}" == "Garry's Mod" ]; then
 	fn_fastdl_init
 	fn_gmod_fastdl
 	fn_check_bzip2
-	if [ ${bzip2installed} == "1" ]; then
+	if [ "${bzip2installed}" == "1" ]; then
 		fn_fastdl_bzip2
 	fn_fastdl_completed
 	fi
