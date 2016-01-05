@@ -46,50 +46,50 @@ cd ${systemdir}
 # Map Files
 echo "Copying map files"
 sleep 1
-find . -name '*.bsp' | cpio -updm ${fastdldir}
+find . -name '*.bsp' | cpio -updm "${fastdldir}"
 echo "Done"
 sleep 1
 
 # Materials
 echo "Copying Materials"
 sleep 1
-find . -name '*.vtf' | cpio -updm ${fastdldir}
-find . -name '*.vmt' | cpio -updm ${fastdldir}
+find . -name '*.vtf' | cpio -updm "${fastdldir}"
+find . -name '*.vmt' | cpio -updm "${fastdldir}"
 echo "Done"
 sleep 1
 
 # Models
 echo "Copying Models"
 sleep 1
-find . -name '*.vtx' | cpio -updm ${fastdldir}
-find . -name '*.vvd' | cpio -updm ${fastdldir}
-find . -name '*.mdl' | cpio -updm ${fastdldir}
-find . -name '*.phy' | cpio -updm ${fastdldir}
+find . -name '*.vtx' | cpio -updm "${fastdldir}"
+find . -name '*.vvd' | cpio -updm "${fastdldir}"
+find . -name '*.mdl' | cpio -updm "${fastdldir}"
+find . -name '*.phy' | cpio -updm "${fastdldir}"
 echo "Done"
 sleep 1
 
 # Particles
 echo "Copying Particles"
 sleep 1
-find . -name '*.pcf' | cpio -updm ${fastdldir}
+find . -name '*.pcf' | cpio -updm "${fastdldir}"
 echo "Done"
 sleep 1
 
 # Sounds
 echo "Copying Sounds"
 sleep 1
-find . -name '*.wav' | cpio -updm ${fastdldir}
-find . -name '*.mp3' | cpio -updm ${fastdldir}
-find . -name '*.ogg' | cpio -updm ${fastdldir}
+find . -name '*.wav' | cpio -updm "${fastdldir}"
+find . -name '*.mp3' | cpio -updm "${fastdldir}"
+find . -name '*.ogg' | cpio -updm "${fastdldir}"
 echo "Done"
 sleep 1
 
 # Resources (mostly fonts)
 echo "Copying fonts and png"
 sleep 1
-find . -name '*.otf' | cpio -updm ${fastdldir}
-find . -name '*.ttf' | cpio -updm ${fastdldir}
-find . -name '*.png' | cpio -updm ${fastdldir}
+find . -name '*.otf' | cpio -updm "${fastdldir}"
+find . -name '*.ttf' | cpio -updm "${fastdldir}"
+find . -name '*.png' | cpio -updm "${fastdldir}"
 echo "Done"
 sleep 1
 
@@ -101,8 +101,8 @@ if [ -d "${fastdldir}/addons" ]; then
 	echo "Possible FastDL files found into addons"
 	echo "Moving those files to their correct folder"
 	sleep 2
-	cp -Rf ${fastdldir}/addons/*/* ${fastdldir}
-	rm -R ${fastdldir}/addons
+	cp -Rf ${fastdldir}/addons/*/* "${fastdldir}"
+	rm -R "${fastdldir}/addons"
 	echo "Done"
 	sleep 1
 fi
@@ -113,7 +113,7 @@ if [ -d "${fastdldir}/lua" ]; then
 	sleep 1
 	echo "Copying those files to their hopefully correct locations"
 	sleep 1
-	cp -Rf ${fastdldir}/lua/* ${fastdldir}
+	cp -Rf "${fastdldir}/lua/"* "${fastdldir}"
 	echo "Done"
 	sleep 1
 fi
@@ -154,7 +154,7 @@ echo "Compressing files using bzip2..."
 sleep 2
 
 # bzip2 all files that are not already compressed (keeping original files)
-find ${fastdldir} -not -name \*.bz2 -exec bzip2 -k \{\} \;
+find "${fastdldir}" -not -name \*.bz2 -exec bzip2 -k \{\} \;
 echo "bzip2 compression done"
 sleep 1
 }
