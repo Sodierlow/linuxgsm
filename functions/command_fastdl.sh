@@ -3,7 +3,7 @@
 # Author: Daniel Gibbs
 # Contributor: UltimateByte
 # Website: http://gameservermanagers.com
-lgsm_version="040116"
+lgsm_version="200116"
 
 # Description: Creates a FastDL folder
 
@@ -12,12 +12,16 @@ function_selfname="$(basename $(readlink -f "${BASH_SOURCE[0]}"))"
 
 check.sh
 
-# Directory
+# Directories
 fastdldir="${rootdir}/fastdl"
+# Server lua autorun dir, used to autorun lua on client connect to the server
+luasvautorundir="${systemdir}/lua/audoturn/server"
+luafastdlfile="lgsm_cl_force_fastdl.lua"
+luafastdlfullpath="${luasvautorundir}/${luafastdlfile}"
 
 fn_fastdl_init(){
 # User confirmation for starting process
-echo "Create a FastDL Folder ?"
+echo "Generate a FastDL Folder ?"
 while true; do
 	read -p "Continue? [y/N]" yn
 	case $yn in
@@ -34,6 +38,17 @@ if [ ! -d "${fastdldir}" ]; then
 else
 	echo "Updating FastDL..."
 fi
+# Ask for lua resource add file use
+echo "Do you wish to use a lua file to force clients to download FastDL content ?"
+echo "It can be necessary for addons devs that forgot about registering their files to be downloaded through FastDL"
+while true; do
+	read -p "Continue? [y/n]" yn
+	case $yn in
+	[Yy]* ) luaressource="on"; break;;
+	[Nn]* ) luaressource="off"; return 1;;
+	* ) echo "Please answer yes or no.";;
+	esac
+done
 }
 
 fn_gmod_fastdl(){
@@ -160,8 +175,10 @@ sleep 1
 }
 
 # Function to implement
-fn_gmod_force_download(){
-echo "not implemented yet"
+fn_lua_fastdl(){
+if [ luaressource="off" == "on" ]; then
+	if [ -f "${luafastdlfullpath}" ]; then
+		echo "Removing "
 }
 
 fn_fastdl_completed(){
@@ -171,7 +188,7 @@ echo "Now you should configure your HTTP server to target the fastdl folder that
 echo "Or copy files to an external server"
 echo "Don't forget to change your sv_downloadurl accordingly in ${servercfgfullpath}"
 if [ "$bzip2installed" == "0" ]; then
-echo "By the way, you'd better install bzip2 an re-run this script"
+echo "By the way, you'd better install bzip2 an re-run this command"
 fi
 echo "----------------------------------"
 exit
@@ -185,9 +202,8 @@ if [ "${gamename}" == "Garry's Mod" ]; then
 	fn_check_bzip2
 	if [ "${bzip2installed}" == "1" ]; then
 		fn_fastdl_bzip2
-	fn_fastdl_completed
 	fi
-	exit
-else
+		fn_lua_fastdl
+	fn_fastdl_completed
 	exit
 fi
